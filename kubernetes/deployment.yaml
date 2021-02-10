@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2021-02-09T16:35:48Z"
+  generation: 1
+  labels:
+    app: hw-1
+  name: hw-1
+  namespace: default
+  resourceVersion: "18748"
+  selfLink: /apis/apps/v1/namespaces/default/deployments/hw-1
+  uid: fe8112b5-2992-4699-9078-2fb4fcffc74e
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: hw-1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hw-1
+    spec:
+      containers:
+      - env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              key: PORT
+              name: hw-1-config-sojq
+        image: gcr.io/ticket-idm/helloworld@sha256:5855748dfb96d1a9cf4ee83d354ee1eb16fdf03eac7f950256f3f922fb6b5acb
+        imagePullPolicy: IfNotPresent
+        name: helloworld-sha256-1
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2021-02-09T16:35:51Z"
+    lastUpdateTime: "2021-02-09T16:35:51Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2021-02-09T16:35:48Z"
+    lastUpdateTime: "2021-02-09T16:35:51Z"
+    message: ReplicaSet "hw-1-77fb959f65" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 3
+  replicas: 3
+  updatedReplicas: 3
