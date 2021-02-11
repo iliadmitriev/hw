@@ -54,23 +54,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    cloud.google.com/neg: '{"ingress":true}'
-  finalizers:
-    - service.kubernetes.io/load-balancer-cleanup
   labels:
     app: hw-1
   name: hw-1-service
   namespace: default
 spec:
   clusterIP: 10.12.4.124
-  externalTrafficPolicy: Cluster
   ports:
-    - nodePort: 30843
+    - protocol: TCP 
       port: 80
-      protocol: TCP
       targetPort: 8080
   selector:
     app: hw-1
-  sessionAffinity: None
-  type: LoadBalancer
