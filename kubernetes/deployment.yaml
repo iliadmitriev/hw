@@ -60,6 +60,7 @@ metadata:
   namespace: default
 spec:
   type: NodePort
+  clusterIP: 10.12.4.124
   ports:
     - protocol: TCP 
       port: 80
