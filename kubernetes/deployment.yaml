@@ -59,7 +59,7 @@ metadata:
   name: hw-1-service
   namespace: default
 spec:
-  clusterIP: None
+  type: NodePort
   ports:
     - protocol: TCP 
       port: 80
