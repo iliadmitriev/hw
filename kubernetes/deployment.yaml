@@ -59,7 +59,7 @@ metadata:
   name: hw-1-service
   namespace: default
 spec:
-  clusterIP: 10.12.4.124
+  clusterIP: None
   ports:
     - protocol: TCP 
       port: 80
